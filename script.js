@@ -1,3 +1,7 @@
+let array = [];
+let answer_object = {};
+let answer_array = [];
+
 function getRandomIntInclusive(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -8,29 +12,41 @@ const questionGenerator = (array, hint_array) => {
     console.log(array);
     console.log(hint_array);
     let beside = 0;
-    let vertical_array = [];
+    let vertical = 0;
     let hint_array_index = 3;
+    let vertical_index = 1;
     for (let i = 1; i <= array.length; i++) {
         //console.log(array[i]);
         beside += array[i - 1];
         if (i % 2 === 0) {
-            console.log(beside);
-            console.log(hint_array[hint_array_index]);
+            //console.log(beside);
+            //console.log(hint_array[hint_array_index]);
             document.getElementById(hint_array[hint_array_index]).innerText =
                 beside;
             beside = 0;
             hint_array_index++;
+        }
 
-            vertical_array.push(array[i - 1]);
+        if (i <= 2) {
+            //console.log(array[i - 1]);
+            for (let j = 0; j < 2; j++) {
+                vertical = array[i - 1] + array[i - 1 + 2];
+            }
+            console.log(vertical);
+            document.getElementById(hint_array[vertical_index]).innerText =
+                vertical;
+
+            vertical_index++;
         }
     }
-    console.log(vertical_array + " vertical");
 };
 
 const squareGenerator = () => {
     const main = document.getElementById("main");
-    let array = [];
     let hint_array = [];
+
+    let input_id = 0;
+
     for (let i = 0; i < 9; i++) {
         if (i % 3 === 0 || i < 3) {
             const div = document.createElement("div");
@@ -40,7 +56,10 @@ const squareGenerator = () => {
             main.appendChild(div);
         } else {
             const input = document.createElement("input");
-            input.setAttribute("id", `id_${i}`);
+
+            input.setAttribute("id", `id_${input_id}`);
+            input_id++;
+
             input.classList.add("input_square");
             input.maxLength = 1;
             input.type = "number";
@@ -55,3 +74,24 @@ const squareGenerator = () => {
 };
 
 squareGenerator();
+
+const checkAnswer = (e) => {
+    const n = e.target.value;
+    const index = Number(e.target.id.slice(-1));
+
+    console.log(n);
+    console.log(e.target.id);
+    console.log(index);
+
+    answer_array[index] = n;
+    console.log(answer_array);
+
+    if (array.toString() === answer_array.toString()) {
+        console.log("正解");
+        const popup = document.getElementById("correct_popup");
+        popup.style.display = "block";
+    }
+};
+
+//どれかの入力欄に入力されているときに発生
+window.addEventListener("input", checkAnswer);

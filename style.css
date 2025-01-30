@@ -21,3 +21,13 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 60px;
     text-align: center;
 }
+
+#correct_popup {
+    display: none;
+    font-size: 100px;
+    position: absolute;
+    top: 20vh;
+    left: 2vw;
+    color: red;
+    background-color: gold;
+}
