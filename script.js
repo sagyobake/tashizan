@@ -32,7 +32,7 @@ const questionGenerator = (array, hint_array) => {
             for (let j = 0; j < 2; j++) {
                 vertical = array[i - 1] + array[i - 1 + 2];
             }
-            console.log(vertical);
+
             document.getElementById(hint_array[vertical_index]).innerText =
                 vertical;
 
@@ -41,11 +41,28 @@ const questionGenerator = (array, hint_array) => {
     }
 };
 
+const checkingDuplication = (input_id, n) => {
+    let r = getRandomIntInclusive(1, n);
+
+    if (input_id % 2 === 0 && r === Number(array[input_id - 2])) {
+        console.log(r);
+        return checkingDuplication(input_id, n);
+    } else if (input_id > 2 && r === Number(array[input_id - 3])) {
+        console.log(r);
+        return checkingDuplication(input_id, n);
+    } else {
+        console.log(r);
+        return r;
+    }
+};
+
 const squareGenerator = () => {
     const main = document.getElementById("main");
     let hint_array = [];
 
     let input_id = 0;
+    let n = 9;
+    let input_n = 1;
 
     for (let i = 0; i < 9; i++) {
         if (i % 3 === 0 || i < 3) {
@@ -64,8 +81,19 @@ const squareGenerator = () => {
             input.maxLength = 1;
             input.type = "number";
             input.pattern = "^[0-9]+$";
-            array.push(getRandomIntInclusive(1, 9));
             main.appendChild(input);
+
+            const r = checkingDuplication(input_id, n);
+            //console.log(r);
+
+            array.push(r);
+
+            if (input_n % 2 === 0) {
+                n++;
+            }
+
+            n--;
+            input_n++;
         }
     }
 
