@@ -61,7 +61,6 @@ const squareGenerator = () => {
     let hint_array = [];
 
     let input_id = 0;
-    let n = 9;
     let input_n = 1;
 
     for (let i = 0; i < 9; i++) {
@@ -83,16 +82,11 @@ const squareGenerator = () => {
             input.pattern = "^[0-9]+$";
             main.appendChild(input);
 
-            const r = checkingDuplication(input_id, n);
+            const r = checkingDuplication(input_id, 9);
             //console.log(r);
 
             array.push(r);
 
-            if (input_n % 2 === 0) {
-                n++;
-            }
-
-            n--;
             input_n++;
         }
     }
