@@ -82,6 +82,8 @@ const squareGenerator = () => {
             input.pattern = "^[0-9]+$";
             main.appendChild(input);
 
+            //nを階乗のように減らしていくとMaximCallstackが発生する。
+            //数をかぶらなくするべきであり、減らしていくだけではない。減らす、または増やすことの二通りある。
             const r = checkingDuplication(input_id, 9);
             //console.log(r);
 
