@@ -1,11 +1,3 @@
-/* inputのスピンボタンを消す */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-
 #main {
     display: grid;
     grid-template-columns: 100px 100px 100px;
@@ -18,16 +10,14 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .input_square {
+    border: 1px solid;
     font-size: 60px;
     text-align: center;
 }
 
-#correct_popup {
-    display: none;
-    font-size: 100px;
-    position: absolute;
-    top: 20vh;
-    left: 2vw;
-    color: red;
-    background-color: gold;
+.input_square:hover {
+    border: 3px solid;
 }
+
+
+
