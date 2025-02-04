@@ -144,6 +144,5 @@ header {
 }
 
 .new_question {
-    text-align: right;
-    margin-right: 10px;
+    margin: 10px;
 }
