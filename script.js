@@ -31,7 +31,7 @@ const whCheck = (array) => {
 const correctCheck = () => {
     let array = [];
     for (let i = 0; i < 4; i++) {
-        const r = getRandomIntInclusive(1, 4);
+        const r = getRandomIntInclusive(1, 9);
         array.push(r);
     }
     check = 0;
