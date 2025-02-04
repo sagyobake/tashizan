@@ -11,18 +11,40 @@
 <body>
     <header>
         <h1>足し算パズル</h1>
-        <p>それぞれのマスに1~9の数字を入れてください。</p>
-        <p>縦、横の列に同じ数を入れてはいけません。</p>
     </header>
+    <div class="new_question">
+        <a href="" id="new_question">新しい問題</a>
+    </div>
+    <main>
+        <section class="tours">
+            <!-- ボタン -->
+            <a href="#popup" class="btn-green">足し算パズルのルール</a>
+        </section>
+        <!-- ポップアップ -->
+        <section class="popup" id="popup">
+            <div class="popup__container">
+                <p>それぞれのマスに1~9の数字を入れてください。</p>
+                <p>青のマスに縦、横の合計値が書かれています。</p>
+                <p>縦、横の列に同じ数を入れてはいけません。</p>
+                <!-- 閉じるボタン -->
+                <a href="#tours" class="popup__close">&times;</a>
+            </div>
+        </section>
+    </main>
 
 
     <div id="main"></div>
 
-    <footer></footer>
+    <footer>
+        <div id="popWin">
+            <div class="pop-win">
+                正解！
+                <div id="close">☓</div>
+            </div>
+        </div>
+    </footer>
 
-    <script src="./innerPCG.js"></script>
     <script src="./script.js"></script>
-    <script src="./input.js"></script>
 </body>
 
 </html>
